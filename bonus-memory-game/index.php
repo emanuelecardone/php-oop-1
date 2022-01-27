@@ -45,10 +45,11 @@
                     <a @click="playGame" href="#" class="btn btn-light text-primary fw-bold px-5 py-3">Start</a>
                 </div>
                 <div v-else-if="game.grid" class="game_grid">
+                    <h2>{{utilities.currentText}}</h2>
                     <div class="container-fluid">
                         <div class="row row-cols-3 g-5">
                             <div v-for="icon,index in icons" class="col">
-                                <div class="icon_wrapper w_30 h-100 p-2 mx-auto d-flex justify-content-center align-items-center border border-1 border-white" :class="{'showed': index === utilities.showedIndex}">  
+                                <div @click="checkClicked(index)" class="icon_wrapper w_30 h-100 p-2 mx-auto d-flex justify-content-center align-items-center border border-1 border-white" :class="{'showed': index === utilities.showedIndex, 'clicked': clickedList.includes(index)}">  
                                     <div :class="icon"></div>
                                 </div>
                             </div>
@@ -56,7 +57,7 @@
                     </div>
                 </div>
                 <div v-else-if="game.endgame" class="end_game">
-
+                    <h2>{{utilities.finalMessage}}</h2>
                 </div>
             </div>
         </div>

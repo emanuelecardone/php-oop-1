@@ -20,10 +20,6 @@ ul{
     align-items: center;
     color: white;
 }
-.game_subwrapper > .game_grid{
-    flex-direction: row;
-    justify-content: space-around;
-}
 
 .game_subwrapper p{
     font-size: 25px;
@@ -54,6 +50,7 @@ ul{
     background-color: black;
 }
 /* Icona illuminata */
-.icon_wrapper.showed{
+.icon_wrapper.showed,
+.icon_wrapper.clicked{
     background-color: green;
 }

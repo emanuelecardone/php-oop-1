@@ -7,7 +7,7 @@ const app = new Vue(
             // Oggetto con informazioni sull'user
             user: {
                 // Indica se è stato creato un utente
-                registered: false,
+                registered: true,
                 // Indica se l'utente deve confermare
                 almostRegistered: false,
                 name: null,
@@ -30,12 +30,21 @@ const app = new Vue(
                 gameClock: null,
                 endShowClock: null,
                 showedIndex: null,
-                level: 0
+                currentText: 'Playing sequence, pay attention!',
+                level: 0,
+                clickIsPossible: false,
+                finalMessage: null
             },
             // Array con gli index delle icone per ciascun livello
             iconsToShow: [
-                [2,3,6,1]
-            ]
+                [2,3,6,1],
+                [0,8,3,10,1],
+                [11,9,0,9,2,7]
+            ],
+            // Array con le icone clickate così da colorarle di verde al click
+            clickedList: [],
+            // Indice che inquadra il numero di click effettuati dall'utente, così da comparare quell'indice con quello corrispondente nell'array di indici mostrati
+            clickedIcons: null
         },
         methods: {
             // Funzione per creare l'utente al click di "Send"
@@ -85,10 +94,37 @@ const app = new Vue(
                             // Dopo 1 secondo finisce di mostrare le icone e anche l'ultima torna nulla
                             this.utilities.endShowClock = setTimeout(() => {
                                 this.utilities.showedIndex = null;
+                                this.utilities.currentText = 'Your turn!';
+                                this.utilities.clickIsPossible = true;
                             }, 1000);
                         }
                     }, 1000);
                 }, 1000);
+            },
+            // Funzione per controllare l'errore al click di un'icona (parametro = index dell'icona clickata)
+            checkClicked: function(clickedIndex){
+                // Tutto è possibile se la sequenza è già stata mostrata, quindi se clickIsPossible è true
+                if(this.utilities.clickIsPossible){
+                    // Push nell'array per colorare le icone clickate
+                    this.clickedList.push(clickedIndex);
+                    // Per far andare pari passo indice dell'array di icone mostrate e il conteggio di click, il conteggio parte da 0 e non da 1
+                    if(this.clickedIcons === null){
+                        this.clickedIcons = 0;
+                    } else{
+                        this.clickedIcons++;
+                    }
+
+                    // Condizione per l'endgame (vittoria o sconfitta) 
+                    if(this.iconsToShow[this.utilities.level][this.clickedIcons] !== clickedIndex){
+                        this.game.grid = false;
+                        this.game.endgame = true;
+                        this.utilities.finalMessage = 'You lost!';
+                    } else if(this.clickedIcons === this.iconsToShow[this.utilities.level].length - 1){
+                        this.game.grid = false;
+                        this.game.endgame = true;
+                        this.utilities.finalMessage = 'You won!';
+                    }
+                }
             }
         }
     }
