@@ -4,7 +4,6 @@
     $user_name = $_GET['userName'];
     $user_lastname = $_GET['userLastName'];
     $user_age = $_GET['userAge'];
-    $user_email = $_GET['userEmail'];
 
     class User {
 

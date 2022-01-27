@@ -38,7 +38,9 @@
 
         <!-- Pagina gioco -->
         <div v-else-if="user.registered" class="game w-100 h-100 d-flex justify-content-center align-items-center text-center">
-            <h2>test</h2>
+            <div class="game_subwrapper w-75 h-75 border border-5 border-white">
+
+            </div>
         </div>
     </div>
 
