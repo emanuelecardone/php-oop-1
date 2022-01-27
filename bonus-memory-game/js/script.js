@@ -15,6 +15,12 @@ const app = new Vue(
                 age: null,
                 // Verrà riempito col response dell'api
                 toShow: null
+            },
+            // Oggetto per dare il v-if alle sezioni di game
+            game: {
+                tutorial: true,
+                grid: false,
+                endgame: false
             }
         },
         methods: {
@@ -38,6 +44,11 @@ const app = new Vue(
             // Funzione per confermare i dati al click di "Confirm" e mostrare la sezione gioco
             startGame: function(){
                 this.user.registered = true;
+            },
+            // Funzione per passare da tutorial alla griglia di gioco
+            playGame: function(){
+                this.game.tutorial = false;
+                this.game.grid = true;
             }
         }
     }

@@ -39,7 +39,17 @@
         <!-- Pagina gioco -->
         <div v-else-if="user.registered" class="game w-100 h-100 d-flex justify-content-center align-items-center text-center">
             <div class="game_subwrapper w-75 h-75 border border-5 border-white">
+                <div v-if="game.tutorial" class="tutorial">
+                    <h2 class="fs_40">Tutorial</h2>
+                    <p class="w-50">Remember the correct sequence of the icons you see, then try to repeat it. If you fail, you will start the level again. Ready?</p>
+                    <a @click="playGame" href="#" class="btn btn-light text-primary fw-bold px-5 py-3">Start</a>
+                </div>
+                <div v-else-if="game.grid" class="game_grid">
 
+                </div>
+                <div v-else-if="game.endgame" class="end_game">
+
+                </div>
             </div>
         </div>
     </div>
