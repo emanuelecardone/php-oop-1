@@ -7,7 +7,7 @@ const app = new Vue(
             // Oggetto con informazioni sull'user
             user: {
                 // Indica se è stato creato un utente
-                registered: true,
+                registered: false,
                 // Indica se l'utente deve confermare
                 almostRegistered: false,
                 name: null,
