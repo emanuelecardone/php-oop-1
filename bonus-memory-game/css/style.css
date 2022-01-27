@@ -20,7 +20,40 @@ ul{
     align-items: center;
     color: white;
 }
+.game_subwrapper > .game_grid{
+    flex-direction: row;
+    justify-content: space-around;
+}
 
 .game_subwrapper p{
     font-size: 25px;
+}
+
+/* Icone */
+.circle{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: white;
+}
+.triangle{
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+    border-bottom-color: white;
+    position: relative;
+    bottom: 25px;
+}
+.square{
+    width: 75px;
+    height: 75px;
+    background-color: white;
+}
+
+.icon_wrapper{
+    background-color: black;
+}
+/* Icona illuminata */
+.icon_wrapper.showed{
+    background-color: green;
 }
