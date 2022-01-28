@@ -1,5 +1,5 @@
 <!-- Utilizzo il require in quanto tutta la pagina non ha senso se non ho i dati sui film -->
-<?php require __DIR__ . './moviedata.php'; ?>
+<?php require __DIR__ . '/moviedata.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
